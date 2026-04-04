@@ -96,7 +96,6 @@ textarea.inp{resize:none;line-height:1.6;font-size:12px}
 </head>
 <body>
 
-<!-- ① セットアップ画面 -->
 <div id="scSetup" style="display:none">
 <div class="min-h-screen px-6 py-14 overflow-y-auto" style="padding-bottom:40px">
 <div class="max-w-sm mx-auto">
@@ -135,7 +134,6 @@ textarea.inp{resize:none;line-height:1.6;font-size:12px}
         <input id="su_k" type="password" placeholder="AIzaSy..." class="inp text-xs">
         <div class="hint mt-2">APIキー未設定の場合でも、レビュー用のAIモック機能で動作確認が可能です。</div>
       </div>
-      <!-- GAS URLを追加 -->
       <div>
         <div class="lbl">GAS Webhook URL（任意）</div>
         <input id="su_gas" type="url" placeholder="https://script.google.com/macros/s/..." class="inp text-xs">
@@ -150,7 +148,6 @@ textarea.inp{resize:none;line-height:1.6;font-size:12px}
 </div></div>
 </div>
 
-<!-- ② ホーム画面 -->
 <div id="scHome" class="pb-nav" style="display:none">
   <div class="px-6 pt-12 pb-3 flex justify-between items-end border-b border-white/5 mb-4">
     <div>
@@ -254,7 +251,6 @@ textarea.inp{resize:none;line-height:1.6;font-size:12px}
   </div>
 </div>
 
-<!-- Step 1: Analyzer -->
 <div id="scChecker" class="pb-nav" style="display:none">
   <div class="px-6 pt-12 pb-3 flex items-center gap-3 border-b border-white/5 mb-5">
     <button onclick="cancelProcess()" class="tap w-8 h-8 rounded border border-white/10 flex items-center justify-center text-slate-400 hover:text-white shrink-0">
@@ -299,7 +295,6 @@ textarea.inp{resize:none;line-height:1.6;font-size:12px}
       <div class="gc p-4" id="ck_mc"><div class="flex justify-between items-center"><div><div class="text-[10px] uppercase tracking-widest text-slate-400 font-bold mb-1">Month Forecast</div><div class="text-[10px] text-slate-500">月末残高予測</div></div><div id="ck_m" class="flex items-center justify-end gap-2 text-xs"></div></div></div>
     </div>
 
-    <!-- URL、金額、なぜ欲しいか（自由記述）の3つに絞った詳細入力 -->
     <div id="f_detail" style="display:none" class="space-y-5 a2 mt-6 border-t border-white/5 pt-6">
       <div class="sec text-cyan-500"><i class="fas fa-robot mr-1"></i> Data for AI Agent</div>
       <div class="gc p-4 border-l-2 border-l-cyan">
@@ -317,7 +312,6 @@ textarea.inp{resize:none;line-height:1.6;font-size:12px}
   </div>
 </div>
 
-<!-- Step 2: AI Chat -->
 <div id="scAiChat" class="relative bg-[#0A0F1A]" style="display:none">
   <div class="px-6 pt-12 pb-3 flex items-center gap-3 border-b border-white/5 mb-2 bg-[#0A0F1A] sticky top-0 z-20">
     <button onclick="cancelProcess()" class="tap w-8 h-8 rounded border border-white/10 flex items-center justify-center text-slate-400 shrink-0">
@@ -348,7 +342,6 @@ textarea.inp{resize:none;line-height:1.6;font-size:12px}
   </div>
 </div>
 
-<!-- Step 3: Summary -->
 <div id="scSummary" class="relative bg-[#0A0F1A]" style="display:none">
   <div class="px-6 pt-12 pb-3 flex items-center gap-3 border-b border-white/5 mb-5">
     <button onclick="cancelProcess()" class="tap w-8 h-8 rounded border border-white/10 flex items-center justify-center text-slate-400 shrink-0">
@@ -388,7 +381,6 @@ textarea.inp{resize:none;line-height:1.6;font-size:12px}
   </div>
 </div>
 
-<!-- Step 4 & 5: Mindfulness & Decision -->
 <div id="scMindful" class="relative bg-black min-h-screen flex flex-col items-center justify-center overflow-hidden" style="display:none">
   <div class="mindful-ring"></div>
   <div class="relative z-10 text-center w-full px-8">
@@ -398,7 +390,6 @@ textarea.inp{resize:none;line-height:1.6;font-size:12px}
       <button onclick="doAvoid()" class="w-full py-5 rounded-lg bg-emerald-500/20 text-emerald-400 border border-emerald-500/50 font-bold text-[13px] tracking-widest uppercase transition-transform active:scale-95">
         AVOID (やめる)
       </button>
-      <!-- 仕様書通り WAIT 48H を削除 -->
       <button id="btn_buy_locked" onclick="doBuy()" class="w-full py-4 rounded-lg bg-transparent border border-white/10 text-slate-600 font-bold text-[11px] tracking-widest uppercase transition-all">
         <span id="txt_buy_locked">PROCEED TO BUY / GO</span>
       </button>
@@ -406,7 +397,6 @@ textarea.inp{resize:none;line-height:1.6;font-size:12px}
   </div>
 </div>
 
-<!-- ⑤ 月末レポート -->
 <div id="scReport" class="pb-nav" style="display:none">
   <div class="px-6 pt-12 pb-3 flex justify-between items-end border-b border-white/5 mb-4">
     <div>
@@ -458,7 +448,6 @@ textarea.inp{resize:none;line-height:1.6;font-size:12px}
   </div>
 </div>
 
-<!-- ⑥ 設定画面 -->
 <div id="scSettings" class="pb-nav" style="display:none">
   <div class="px-6 pt-12 pb-3 border-b border-white/5 mb-4">
     <div class="num text-2xl tracking-tight">Settings</div>
@@ -521,7 +510,6 @@ textarea.inp{resize:none;line-height:1.6;font-size:12px}
   </div>
 </div>
 
-<!-- ⑦ 履歴画面 -->
 <div id="scHistory" class="pb-nav" style="display:none">
   <div class="px-6 pt-12 pb-3 flex justify-between items-end border-b border-white/5 mb-4">
     <div>
@@ -545,7 +533,6 @@ textarea.inp{resize:none;line-height:1.6;font-size:12px}
   </div>
 </div>
 
-<!-- ボトムナビ -->
 <div id="botNav" class="bot-nav" style="display:none">
   <div class="nb on" id="nb_h" onclick="navTo('scHome','nb_h')"><i class="fa-solid fa-layer-group"></i><span>Dash</span></div>
   <div class="nb" id="nb_hi" onclick="navTo('scHistory','nb_hi')"><i class="fa-solid fa-list"></i><span>Log</span></div>
@@ -553,7 +540,6 @@ textarea.inp{resize:none;line-height:1.6;font-size:12px}
   <div class="nb" id="nb_s" onclick="navTo('scSettings','nb_s')"><i class="fa-solid fa-sliders"></i><span>Config</span></div>
 </div>
 
-<!-- Why Overlay -->
 <div id="whyOv" class="s-ov">
   <div id="whySh" class="s-body">
     <div class="drag-h"></div>
@@ -569,7 +555,6 @@ textarea.inp{resize:none;line-height:1.6;font-size:12px}
   </div>
 </div>
 
-<!-- 事後記録モーダル -->
 <div id="lateOv" class="s-ov" onclick="closeOv(event,'lateOv')">
   <div class="s-body px-6 pt-4 pb-6" onclick="event.stopPropagation()">
     <div class="drag-h"></div>
@@ -586,8 +571,7 @@ textarea.inp{resize:none;line-height:1.6;font-size:12px}
       <div>
         <div class="lbl">Category</div>
         <div class="flex flex-wrap gap-1.5 mt-1 mb-2" id="lt_cats_area">
-          <!-- ここはJSで動的生成されます -->
-        </div>
+          </div>
         <input id="lt_w" type="text" placeholder="自由入力" class="inp text-xs">
       </div>
       <div><div class="lbl">Reason (必須)</div><textarea id="lt_y" rows="2" placeholder="分析用メモ (なぜアプリを通さなかったか)" class="inp"></textarea></div>
@@ -611,7 +595,7 @@ const HIGH_PRICE_THRESHOLD = 3000;
 const FIXED_AMOUNTS = { conv: 2000, uber: 3000, drink: 6000 };
 
 const DEF_CHARS = [
-  { id:1, name:'Logic',       icon:'🧠', img:'', side:'left',  role:'データメンター',  persona:'冷静なアナリスト。「月末に赤字です。数時間分の労働が消えるのが心配です」と事実ベースで優しく諭す。' },
+  { id:1, name:'Logic',        icon:'🧠', img:'', side:'left',  role:'データメンター',  persona:'冷静なアナリスト。「月末に赤字です。数時間分の労働が消えるのが心配です」と事実ベースで優しく諭す。' },
   { id:2, name:'Alternative', icon:'💡', img:'', side:'right', role:'ライフプランナー', persona:'優しいコンサルタント。「そのお金、別の経験に使いませんか？家にあるもので代用してみましょう」と提案する。' },
   { id:3, name:'Guardian',    icon:'🛡️', img:'', side:'left',  role:'良き理解者',      persona:'愛のある親友。過去のデータから「前も同じもので後悔してたよね？また同じ思いをしてほしくないな」と引き留める。' }
 ];
@@ -619,7 +603,7 @@ const DEF_CHARS = [
 const DEF_FAILS = [
   { id:1, cat:'コンビニ', name:'導線トラップ浪費',  cond:'仕事帰りに「ちょっと寄るだけ」と思い、つい新作スイーツやビールを買ってしまう。' },
   { id:2, cat:'Amazon',  name:'深夜のドーパミン買い', cond:'23時以降、仕事のストレスから解放された反動で、不要なガジェットをポチる。' },
-  { id:3, cat:'Uber',    name:'悪天候の妥協',       cond:'雨が降っていると「買い物に行く時間と労力がもったいない」と自分に言い訳してしまう。' }
+  { id:3, cat:'Uber',    name:'悪天候の妥協',        cond:'雨が降っていると「買い物に行く時間と労力がもったいない」と自分に言い訳してしまう。' }
 ];
 
 const MINDFUL_MSGS = [
@@ -724,7 +708,6 @@ function buildCharForm(containerId, chars) {
           <div id="cp_${c.id}" class="w-10 h-10 rounded flex items-center justify-center text-lg overflow-hidden bg-black/50 border border-white/10" data-b64="${c.img||''}">
             ${c.img ? `<img src="${c.img}" style="width:100%;height:100%;object-fit:cover">` : (c.icon||'👤')}
           </div>
-          <!-- 画像アップロード用のカメラアイコン -->
           <label for="ci_${c.id}" class="tap absolute -bottom-1 -right-1 w-5 h-5 rounded-full flex items-center justify-center bg-gold cursor-pointer border border-black shadow">
             <i class="fa-solid fa-camera text-[10px] text-black"></i>
           </label>
@@ -732,7 +715,6 @@ function buildCharForm(containerId, chars) {
         </div>
         <div class="flex-1 flex flex-col justify-center">
           <input type="text" id="cn_${c.id}" value="${c.name}" placeholder="エージェント名" class="inp text-xs">
-          <!-- 絵文字入力欄を削除し、内部的にiconを維持するための隠しフィールド -->
           <input type="hidden" id="ck_${c.id}" value="${c.icon}">
         </div>
       </div>
@@ -1032,10 +1014,17 @@ async function startAiChat(data) {
   _chatHistory = [{ role: "user", parts: [{ text: buildAiPrompt(data, true) }] }];
 
   try {
-    const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ contents: _chatHistory, generationConfig:{temperature:0.7} }) });
+    const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`, { 
+      method:'POST', 
+      headers:{'Content-Type':'application/json'}, 
+      body: JSON.stringify({ 
+        contents: _chatHistory, 
+        generationConfig:{temperature:0.7, responseMimeType: "application/json"} 
+      }) 
+    });
     if (!res.ok) throw new Error('API Error');
     const json = await res.json(); 
-    const raw = json?.candidates?.[0]?.content?.parts?.[0]?.text || ''; 
+    const raw = json?.candidates?.[0]?.content?.parts?.[0]?.text || '{}'; 
     const parsed = JSON.parse(raw.replace(/```[a-z]*/gi, '').replace(/```/g, '').trim());
     
     _imp = parsed.impulse || 'mid'; 
@@ -1100,13 +1089,20 @@ async function sendChat() {
 
   _chatHistory.push({ role: "user", parts: [{ text: `ユーザーの反論:「${msg}」。これに対し、②または③の人格でさらに厳しく、しかし諭すように反論してください。JSONのみ {"speaker":"キャラ名","message":"反論(60字)"}` }] });
   try {
-    const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${data.geminiKey}`, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ contents: _chatHistory, generationConfig:{temperature:0.7} }) });
+    const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${data.geminiKey}`, { 
+      method:'POST', 
+      headers:{'Content-Type':'application/json'}, 
+      body: JSON.stringify({ 
+        contents: _chatHistory, 
+        generationConfig:{temperature:0.7, responseMimeType: "application/json"} 
+      }) 
+    });
     if(!res.ok) throw new Error('API Error');
     const json = await res.json(); 
-    const raw = json?.candidates?.[0]?.content?.parts?.[0]?.text || ''; 
+    const raw = json?.candidates?.[0]?.content?.parts?.[0]?.text || '{}'; 
     const parsed = JSON.parse(raw.replace(/```[a-z]*/gi, '').replace(/```/g, '').trim());
     _chatHistory.push({ role: "model", parts: [{ text: raw }] });
-    const matchedChar = chars.find(c => parsed.speaker.includes(c.name)) || chars[1];
+    const matchedChar = chars.find(c => (parsed.speaker||'').includes(c.name)) || chars[1];
     appendChatBubble(matchedChar, parsed.message);
   } catch(e) { 
     // エラー時も手動で進めるように
@@ -1314,24 +1310,30 @@ async function backupToGAS(){
       body:JSON.stringify({ action:'backup', timestamp:new Date().toISOString(), payload:data }),
       redirect:'follow'
     });
-    const t=await res.text();
-    try{ const j=JSON.parse(t); showToast(j.success?'バックアップ完了':'バックアップ失敗'); }
-    catch(e2){ showToast('バックアップ完了'); }
+    const textRes = await res.text();
+    try{ 
+      const j = JSON.parse(textRes); 
+      showToast(j.success ? 'バックアップ完了' : 'バックアップ失敗'); 
+    } catch(err){ 
+      showToast('バックアップ完了'); 
+    }
   }catch(e){
     console.error('GASバックアップエラー:',e);
     showToast('GAS接続エラー');
   }
 }
 
-
-// GASから失敗DBを同期（CORS制限なし）
+// GASから失敗DBを同期
 async function fetchFailuresFromGAS(){
   const data=load();
   if(!data?.gasUrl){showToast('GAS URL未設定です');return;}
   showToast('失敗DB同期中...');
   try{
-const res=await fetch(`${data.gasUrl}?action=get_failures`,{redirect:'follow'});
-    const failures=await res.json();
+    const res=await fetch(`${data.gasUrl}?action=get_failures`,{redirect:'follow'});
+    const textRes = await res.text();
+    let failures = [];
+    try { failures = JSON.parse(textRes); } catch(e) {}
+    
     if(Array.isArray(failures)&&failures.length>0){
       data.failures=failures;
       save(data);
