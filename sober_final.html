@@ -4,7 +4,22 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
 <title>Sober</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%230A0F1A'/><text x='16' y='22' font-family='serif' font-size='18' fill='%23D4AF37' text-anchor='middle'>S</text></svg>">
+
+<!-- ==========================================
+     ▼ アプリアイコンの設定 ▼
+     GitHub等にアップロードした画像のURL(Raw URL)を href の中に入れてください。
+=========================================== -->
+<link rel="icon" href="https://raw.githubusercontent.com/ユーザー名/リポジトリ名/main/icon.png">
+<link rel="apple-touch-icon" href="https://raw.githubusercontent.com/ユーザー名/リポジトリ名/main/icon.png">
+<!-- ========================================== -->
+
+<!-- iOS/Androidでホーム画面に追加した際、アプリのように表示するための設定 -->
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Sober">
+<meta name="theme-color" content="#0A0F1A">
+
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
@@ -14,21 +29,21 @@
    Sober — Design System (Executive Analytics)
 ============================================================ */
 :root{
-  --bg:       #0A0F1A;
-  --gl:       #131B2B;
-  --gl2:      #1A2438;
-  --bd:       rgba(255,255,255,0.06);
-  --bd2:      rgba(255,255,255,0.1);
-  --gold:     #D4AF37;
-  --gold-d:   rgba(212,175,55,0.12);
-  --cyan:     #3B82F6; 
-  --green:    #10B981;
-  --amber:    #F59E0B;
-  --red:      #EF4444;
-  --orange:   #F97316;
-  --tx:       #F8FAFC;
-  --tx2:      #94A3B8;
-  --tx3:      #475569;
+  --bg:        #0A0F1A;
+  --gl:        #131B2B;
+  --gl2:       #1A2438;
+  --bd:        rgba(255,255,255,0.06);
+  --bd2:       rgba(255,255,255,0.1);
+  --gold:      #D4AF37;
+  --gold-d:    rgba(212,175,55,0.12);
+  --cyan:      #3B82F6; 
+  --green:     #10B981;
+  --amber:     #F59E0B;
+  --red:       #EF4444;
+  --orange:    #F97316;
+  --tx:        #F8FAFC;
+  --tx2:       #94A3B8;
+  --tx3:       #475569;
 }
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;margin:0;padding:0}
@@ -595,39 +610,39 @@ const HIGH_PRICE_THRESHOLD = 3000;
 const FIXED_AMOUNTS = { conv: 2000, uber: 3000, drink: 6000 };
 
 const DEF_CHARS = [
-  { id:1, name:'Logic',        icon:'🧠', img:'', side:'left',  role:'データメンター',  persona:'冷静なアナリスト。「月末に赤字です。数時間分の労働が消えるのが心配です」と事実ベースで優しく諭す。' },
+  { id:1, name:'Logic',        icon:'🧠', img:'', side:'left', role:'データメンター', persona:'冷静なアナリスト。「月末に赤字です。数時間分の労働が消えるのが心配です」と事実ベースで優しく諭す。' },
   { id:2, name:'Alternative', icon:'💡', img:'', side:'right', role:'ライフプランナー', persona:'優しいコンサルタント。「そのお金、別の経験に使いませんか？家にあるもので代用してみましょう」と提案する。' },
-  { id:3, name:'Guardian',    icon:'🛡️', img:'', side:'left',  role:'良き理解者',      persona:'愛のある親友。過去のデータから「前も同じもので後悔してたよね？また同じ思いをしてほしくないな」と引き留める。' }
+  { id:3, name:'Guardian',    icon:'🛡️', img:'', side:'left', role:'良き理解者',      persona:'愛のある親友。過去のデータから「前も同じもので後悔してたよね？また同じ思いをしてほしくないな」と引き留める。' }
 ];
 
 const DEF_FAILS = [
-  { id:1, cat:'コンビニ', name:'導線トラップ浪費',  cond:'仕事帰りに「ちょっと寄るだけ」と思い、つい新作スイーツやビールを買ってしまう。' },
-  { id:2, cat:'Amazon',  name:'深夜のドーパミン買い', cond:'23時以降、仕事のストレスから解放された反動で、不要なガジェットをポチる。' },
-  { id:3, cat:'Uber',    name:'悪天候の妥協',        cond:'雨が降っていると「買い物に行く時間と労力がもったいない」と自分に言い訳してしまう。' }
+  { id:1, cat:'コンビニ', name:'導線トラップ浪費', cond:'仕事帰りに「ちょっと寄るだけ」と思い、つい新作スイーツやビールを買ってしまう。' },
+  { id:2, cat:'Amazon', name:'深夜のドーパミン買い', cond:'23時以降、仕事のストレスから解放された反動で、不要なガジェットをポチる。' },
+  { id:3, cat:'Uber', name:'悪天候の妥協', cond:'雨が降っていると「買い物に行く時間と労力がもったいない」と自分に言い訳してしまう。' }
 ];
 
 const MINDFUL_MSGS = [
   { t: 60, msg: "目を閉じて、深く息を吸い込んでください..." },
   { t: 45, msg: "息をゆっくりと吐き出します..." },
   { t: 30, msg: "それは、本当にあなたの人生の価値を高めるものですか？" },
-  { t: 15, msg: "衝動は波のようなものです。波が過ぎ去るのを静かに待ちましょう..." },
-  { t: 0,  msg: "決断の時です。" }
+  { t: 15, msg: "衝波のようなものです。波が過ぎ去るのを静かに待ちましょう..." },
+  { t: 0, msg: "決断の時です。" }
 ];
 
 const WHY_OPTS = [
-  { id:'hours',   icon:'fa-briefcase',  label:'時給換算の非効率性',   color:'var(--amber)' },
-  { id:'ai',      icon:'fa-robot',      label:'AIの諭し・客観的指摘',       color:'var(--cyan)' },
-  { id:'deficit', icon:'fa-chart-line', label:'赤字リスクへの危機感',     color:'var(--red)' },
-  { id:'cooled',  icon:'fa-snowflake',  label:'冷却期間による冷静化', color:'var(--tx2)' },
-  { id:'price',   icon:'fa-tag',        label:'価格の妥当性欠如',     color:'var(--green)' },
+  { id:'hours', icon:'fa-briefcase', label:'時給換算の非効率性', color:'var(--amber)' },
+  { id:'ai', icon:'fa-robot', label:'AIの諭し・客観的指摘', color:'var(--cyan)' },
+  { id:'deficit', icon:'fa-chart-line', label:'赤字リスクへの危機感', color:'var(--red)' },
+  { id:'cooled', icon:'fa-snowflake', label:'冷却期間による冷静化', color:'var(--tx2)' },
+  { id:'price', icon:'fa-tag', label:'価格の妥当性欠如', color:'var(--green)' },
 ];
 
 const LATE_TX = [
   { kw:['セール','割引','限定','タイムセール'], txt:'セールはマーケティングの基本です。本来の価値を見失っています。' },
-  { kw:['気づいたら','無意識','なんとなく'],   txt:'認知バイアスに負けましたね。プロセスを経ない支出はリスクです。' },
-  { kw:['急い','時間','すぐ','今すぐ'],        txt:'決断を遅らせる猶予を持てない状況での支出は、往々にして不合理です。' },
-  { kw:['ストレス','疲れ','嫌','発散'],        txt:'感情的支出ですね。根本的解決にはなりません。' },
-  { kw:['お酒','酒','ビール','コンビニ'],      txt:'少額の積み重ねが、マクロな予算を破壊します。' },
+  { kw:['気づいたら','無意識','なんとなく'], txt:'認知バイアスに負けましたね。プロセスを経ない支出はリスクです。' },
+  { kw:['急い','時間','すぐ','今すぐ'], txt:'決断を遅らせる猶予を持てない状況での支出は、往々にして不合理です。' },
+  { kw:['ストレス','疲れ','嫌','発散'], txt:'感情的支出ですね。根本的解決にはなりません。' },
+  { kw:['お酒','酒','ビール','コンビニ'], txt:'少額の積み重ねが、マクロな予算を破壊します。' },
   { kw:[], txt:'記録処理完了。データとしての正確性が次回の判断材料になります。' }
 ];
 
@@ -1290,7 +1305,7 @@ function renderReportScore(data,month){
     {icon:'fa-shield-check',col:'var(--green)', sign:'+',val:avoidedTot,label:'Avoided (回避)'},
     {icon:'fa-bag-shopping', col:'var(--tx)',   sign:'-',val:appBought, label:'Verified (計画購入)'},
     {icon:'fa-clock-rotate-left',col:'var(--orange)',sign:'-',val:late,label:'Unverified (事後記録)'},
-    {icon:'fa-database',     col:'var(--red)',  sign:'-',val:zaim,      label:'External (ZAIM)'}
+    {icon:'fa-database',     col:'var(--red)',  sign:'-',val:zaim,       label:'External (ZAIM)'}
   ];
   document.getElementById('rp_bd').innerHTML=rows.map(r=>`<div class="flex items-center justify-between py-2 border-b border-white/5 last:border-0"><div class="flex items-center gap-2"><div class="w-5 flex items-center justify-center"><i class="fa-solid ${r.icon} text-[10px]" style="color:${r.col}"></i></div><div class="text-[11px] font-bold" style="color:${r.col}">${r.label}</div></div><div class="mono text-sm" style="color:${r.col}">${r.sign}${yenHtml(r.val)}</div></div>`).join('');
   document.getElementById('rp_tot').innerHTML=yenHtml(totalDisc); document.getElementById('rp_sh').innerHTML='+'+yenHtml(avoidedTot);
@@ -1412,7 +1427,7 @@ function renderHistory(){
 function recRow(r,idx,canDel){
   const isAvoid=r.result==='avoid'; const isLate=r.result==='late_buy';
   const col=isAvoid?'var(--green)':isLate?'var(--orange)':'var(--tx)'; const sign=isAvoid?'+':'-';
-  const impIcon=r.impulse?{high:'🔴',mid:'🟡',low:'🟢'}[r.impulse]||'':''; const stopLabel=r.stopReason?WHY_OPTS.find(o=>o.id===r.stopReason)?.label||'':'';
+  const impIcon=r.impulse?{high:'🔴',mid:'🟡',low:'🟢'}[r.impulse]||'':''; const stopReason=r.stopReason?WHY_OPTS.find(o=>o.id===r.stopReason)?.label||'':'';
   const tagLabel=isAvoid?'AVOID':isLate?'LATE':'BUY'; const tagCol=isAvoid?'var(--green)':isLate?'var(--orange)':'var(--tx2)';
   const del=canDel?`<button onclick="delRec('${r.id||''}')" class="tap w-6 h-6 rounded flex items-center justify-center ml-2 border border-white/10 hover:bg-red-500/10 hover:text-red-500"><i class="fa-solid fa-xmark text-[10px]"></i></button>`:'';
   const numStr=Math.abs(Number(r.amount||0)).toLocaleString(); const formattedYen=`${sign}<span class="text-[10px] text-slate-500 mr-0.5">¥</span>${numStr}`;
