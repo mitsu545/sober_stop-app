@@ -225,22 +225,22 @@ textarea.inp{resize:none;line-height:1.6;font-size:12px}
       <div class="grid grid-cols-2 gap-3">
         <button onclick="startAnalysis('conv')" class="tap p-4 rounded-lg bg-[#131B2B] border border-white/10 flex flex-col items-center justify-center gap-2">
           <span class="text-2xl mb-1">🏪</span>
-          <span class="text-[10px] font-bold tracking-widest uppercase text-slate-300">対 コンビニ</span>
+          <span class="text-[10px] font-bold tracking-widest uppercase text-slate-300">コンビニ</span>
           <span class="text-[9px] text-slate-500 tracking-widest">¥2,000 固定</span>
         </button>
         <button onclick="startAnalysis('uber')" class="tap p-4 rounded-lg bg-[#131B2B] border border-white/10 flex flex-col items-center justify-center gap-2">
           <span class="text-2xl mb-1">🍔</span>
-          <span class="text-[10px] font-bold tracking-widest uppercase text-slate-300">対 Uber Eats</span>
+          <span class="text-[10px] font-bold tracking-widest uppercase text-slate-300">Uber Eats</span>
           <span class="text-[9px] text-slate-500 tracking-widest">¥3,000 固定</span>
         </button>
         <button onclick="startAnalysis('drink')" class="tap p-4 rounded-lg bg-[#131B2B] border border-white/10 flex flex-col items-center justify-center gap-2">
           <span class="text-2xl mb-1">🍻</span>
-          <span class="text-[10px] font-bold tracking-widest uppercase text-slate-300">対 飲み・タクシー</span>
+          <span class="text-[10px] font-bold tracking-widest uppercase text-slate-300">居酒屋</span>
           <span class="text-[9px] text-slate-500 tracking-widest">¥6,000 固定</span>
         </button>
         <button onclick="startAnalysis('amazon')" class="tap p-4 rounded-lg bg-[#131B2B] border border-white/10 flex flex-col items-center justify-center gap-2">
           <span class="text-2xl mb-1">📦</span>
-          <span class="text-[10px] font-bold tracking-widest uppercase text-slate-300">対 Amazon</span>
+          <span class="text-[10px] font-bold tracking-widest uppercase text-slate-300">Amazon</span>
           <span class="text-[9px] text-slate-500 tracking-widest">URL + 動機入力</span>
         </button>
       </div>
@@ -884,7 +884,7 @@ function startAnalysis(type) {
   ['ck_a','ck_n','ck_r','ck_u'].forEach(id => { const el=document.getElementById(id); if(el) el.value=''; });
 
   // 2. タイトル設定
-  const titles = { conv:'対コンビニ', amazon:'対Amazon', uber:'対Uber Eats', drink:'対飲み会', other:'詳細分析' };
+  const titles = { conv:'コンビニ', amazon:'Amazon', uber:'Uber Eats', drink:'飲み会', other:'詳細分析' };
   document.getElementById('ck_title').textContent = titles[type] || 'Analyzer';
 
   // 3. 表示制御
