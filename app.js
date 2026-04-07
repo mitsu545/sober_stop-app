@@ -471,7 +471,10 @@ function appendChatBubble(persona, text) {
 var chatArea = document.getElementById('ai_chat_area');
 var el = document.createElement('div'); el.className = 'a-fade';
 if (persona) {
-el.innerHTML = '<div class="bw l"><div class="bi"><span class="text-sm">' + persona.icon + '</span></div><div class="bc"><div class="bn">' + escapeHtml(persona.name) + '</div><div class="bl">' + escapeHtml(text) + '</div></div></div>';
+var data = load();
+var iconImg = (data && data.aiPersonaImg) ? data.aiPersonaImg : '';
+var iconHtml = iconImg ? '<img src="' + iconImg + '" style="width:100%;height:100%;object-fit:cover">' : '<span class="text-sm">' + persona.icon + '</span>';
+el.innerHTML = '<div class="bw l"><div class="bi">' + iconHtml + '</div><div class="bc"><div class="bn">' + escapeHtml(persona.name) + '</div><div class="bl">' + escapeHtml(text) + '</div></div></div>';
 } else {
 el.innerHTML = '<div class="bw r"><div class="bc"><div class="bn text-slate-500">You</div><div style="padding:10px 14px;border-radius:12px 2px 12px 12px;font-size:13px;line-height:1.5;background:rgba(255,255,255,0.05);color:var(--tx);border:1px solid var(--bd)">' + escapeHtml(text) + '</div></div></div>';
 }
@@ -654,6 +657,27 @@ document.getElementById('tb_' + t + '_b').style.display = t === name ? 'block' :
 });
 if (name === 'fail') renderFailTab();
 }
+function onAiIconImg(event) {
+var file = event.target.files[0]; if (!file) return;
+var reader = new FileReader();
+reader.onload = function (e) {
+var img = new Image();
+img.onload = function () {
+var cv = document.createElement('canvas'); cv.width = cv.height = 120;
+var ctx = cv.getContext('2d'); var side = Math.min(img.width, img.height);
+ctx.drawImage(img, (img.width - side) / 2, (img.height - side) / 2, side, side, 0, 0, 120, 120);
+var b64 = cv.toDataURL('image/jpeg', 0.75);
+var data = load(); data.aiPersonaImg = b64; save(data);
+var iconEl = document.getElementById('st_ai_icon');
+iconEl.innerHTML = '<img src="' + b64 + '" style="width:100%;height:100%;object-fit:cover">';
+showToast('ICON UPDATED');
+};
+img.onerror = function () { showToast('IMAGE ERROR'); };
+img.src = e.target.result;
+};
+reader.onerror = function () { showToast('READ ERROR'); };
+reader.readAsDataURL(file);
+}
 function renderSettings() {
 var data = load(); if (!data) return;
 document.getElementById('st_i').value = data.income || '';
@@ -663,6 +687,12 @@ document.getElementById('st_k').value = data.geminiKey || '';
 document.getElementById('st_gas').value = data.gasUrl || '';
 document.getElementById('st_wt').value = data.wishThreshold || HIGH_PRICE_THRESHOLD;
 document.getElementById('st_persona').value = data.aiPersona || '';
+var aiIconEl = document.getElementById('st_ai_icon');
+if (data.aiPersonaImg) {
+aiIconEl.innerHTML = '<img src="' + data.aiPersonaImg + '" style="width:100%;height:100%;object-fit:cover">';
+} else {
+aiIconEl.innerHTML = '🧊';
+}
 updateStFree();
 ['st_i', 'st_g', 'st_f'].forEach(function (id) {
 var el = document.getElementById(id);
